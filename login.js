@@ -1,7 +1,7 @@
 function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
     const responsePayload = parseJwt(response.credential);
-    alert(`Welcome back, ${responsePayload.name}! Accessing premium travel services...`);
+    alert(`Welcome back, ${responsePayload.name}! Accessing Voyanix AI...`);
 }
 
 function parseJwt(token) {
@@ -14,46 +14,38 @@ function parseJwt(token) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const signUpBtn = document.getElementById('signUpBtn');
-    const logInBtn = document.getElementById('logInBtn');
-    const toggleSlider = document.querySelector('.toggle-slider');
-    const formTitle = document.getElementById('formTitle');
-    const submitBtnText = document.querySelector('.btn-text');
-    const usernameGroup = document.getElementById('userGroup');
     const authForm = document.getElementById('authForm');
+    const toggleSignUp = document.getElementById('toggleSignUp');
+    const formTitle = document.querySelector('.form-header h1');
+    const submitBtn = document.querySelector('.btn-primary');
 
-    // Toggle Logic
-    signUpBtn.addEventListener('click', () => {
-        signUpBtn.classList.add('active');
-        logInBtn.classList.remove('active');
-        toggleSlider.style.transform = 'translateX(0)';
-        formTitle.textContent = "Create Account";
-        submitBtnText.textContent = "Let's Explore";
-        usernameGroup.style.display = 'block';
+    let isLogin = true;
+
+    toggleSignUp.addEventListener('click', (e) => {
+        e.preventDefault();
+        isLogin = !isLogin;
+
+        if (isLogin) {
+            formTitle.textContent = "Welcome back";
+            submitBtn.textContent = "Continue with Email";
+            toggleSignUp.textContent = "Sign Up";
+            document.querySelector('.footer-note').innerHTML = `Don't have an account? <a href="#" id="toggleSignUp">Sign Up</a>`;
+        } else {
+            formTitle.textContent = "Create account";
+            submitBtn.textContent = "Register with Email";
+            toggleSignUp.textContent = "Log In";
+            document.querySelector('.footer-note').innerHTML = `Already have an account? <a href="#" id="toggleSignUp">Log In</a>`;
+        }
+
+        // Re-attach event listener since innerHTML replaced it
+        document.getElementById('toggleSignUp').addEventListener('click', (newE) => {
+            newE.preventDefault();
+            toggleSignUp.click();
+        });
     });
 
-    logInBtn.addEventListener('click', () => {
-        logInBtn.classList.add('active');
-        signUpBtn.classList.remove('active');
-        toggleSlider.style.transform = 'translateX(calc(100% + 6px))';
-        formTitle.textContent = "Welcome Back";
-        submitBtnText.textContent = "Enter Kingdom";
-        usernameGroup.style.display = 'none';
-    });
-
-    // Password View Toggle
-    const viewToggle = document.querySelector('.view-toggle');
-    const passwordInput = document.getElementById('password');
-
-    viewToggle.addEventListener('click', () => {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        viewToggle.textContent = type === 'password' ? '🔒' : '🔓';
-    });
-
-    // Form Submit
     authForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert("Server connection pending. Please use high-speed Google Auth for now.");
+        alert("Form submission is currently simulation-only. Please use Google Auth.");
     });
 });

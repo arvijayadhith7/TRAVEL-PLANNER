@@ -4,103 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Voyanix - Premium Experience</title>
+    <title>Welcome Back - Travel Voyanix</title>
     <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
-<body>
-    <div class="background-container">
-        <div class="glass-overlay"></div>
-    </div>
-
-    <main class="login-wrapper">
-        <div class="login-card glassmorphism">
-            <header class="brand-section">
-                <div class="logo-wrapper">
-                    <span class="logo-icon">🌍</span>
-                    <h1 class="premium-title">Travel Voyanix</h1>
+<body class="dark-theme">
+    <div class="main-container">
+        <div class="auth-card">
+            <!-- Left Panel: Immersive Image -->
+            <div class="card-left">
+                <div class="image-overlay">
+                    <div class="logo-box">
+                        <span class="logo-emoji">🔥</span>
+                        <div class="logo-text">
+                            <h3>Voyanix AI</h3>
+                            <p>Your all-in-one travel automation.</p>
+                        </div>
+                    </div>
                 </div>
-                <p class="premium-subtitle">Your gateway to the world's finest wonders.</p>
-            </header>
+            </div>
 
-            <nav class="auth-toggle">
-                <button class="nav-toggle active" id="signUpBtn">Sign Up</button>
-                <button class="nav-toggle" id="logInBtn">Log In</button>
-                <div class="toggle-slider"></div>
-            </nav>
+            <!-- Right Panel: Form -->
+            <div class="card-right">
+                <header class="form-header">
+                    <h1>Welcome back</h1>
+                </header>
 
-            <section class="auth-content">
-                <h2 id="formTitle">Create Account</h2>
+                <form id="authForm" class="dark-form">
+                    <div class="input-field">
+                        <span class="icon">📧</span>
+                        <input type="email" id="email" placeholder="Email address" required>
+                    </div>
 
-                <div class="social-auth">
-                    <button class="glass-btn" title="Sign up with Apple">
-                        <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="Apple">
-                    </button>
+                    <div class="input-field">
+                        <span class="icon">🔒</span>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
 
-                    <div class="google-wrapper">
+                    <button type="submit" class="btn-primary">Continue with Email</button>
+
+                    <div class="google-button-container">
                         <div id="g_id_onload"
                             data-client_id="29992587510-rbgu8man8dujd2i3f0rr94o57vcn6qck.apps.googleusercontent.com"
                             data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse"
                             data-auto_prompt="false">
                         </div>
-                        <div class="g_id_signin" data-type="icon" data-shape="circle" data-theme="outline"
-                            data-size="large">
+                        <div class="g_id_signin custom-google-btn" data-type="standard" data-shape="pill"
+                            data-theme="filled_black" data-text="continue_with" data-size="large"
+                            data-logo_alignment="left" data-width="320">
                         </div>
                     </div>
 
-                    <button class="glass-btn" title="Sign up with X">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
-                    </button>
-                </div>
-
-                <div class="divider-text">
-                    <span>prefer email</span>
-                </div>
-
-                <form id="authForm" class="premium-form">
-                    <div class="input-container" id="userGroup">
-                        <input type="text" id="username" placeholder=" " required>
-                        <label for="username">Username</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input type="email" id="email" placeholder=" " required>
-                        <label for="email">Email Address</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input type="password" id="password" placeholder=" " required>
-                        <label for="password">Password</label>
-                        <span class="view-toggle">🔒</span>
-                    </div>
-
-                    <div class="form-footer">
-                        <label class="checkbox-container">
-                            <input type="checkbox" checked>
-                            <span class="checkmark"></span>
-                            Keep me logged in
-                        </label>
-                        <a href="#" class="forgot-link">Forgot?</a>
-                    </div>
-
-                    <button type="submit" class="premium-submit" id="submitBtn">
-                        <span class="btn-text">Let's Explore</span>
-                        <span class="btn-icon">→</span>
-                    </button>
+                    <p class="footer-note">Don't have an account? <a href="#" id="toggleSignUp">Sign Up</a></p>
                 </form>
-            </section>
+            </div>
         </div>
-
-        <footer class="page-footer">
-            <p>&copy; 2026 Travel Voyanix. All rights reserved.</p>
-        </footer>
-    </main>
+    </div>
 
     <script src="login.js"></script>
 </body>
