@@ -1,18 +1,7 @@
 function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
-    // You can send the token to your server for verification
     const responsePayload = parseJwt(response.credential);
-
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
-
-    alert(`Welcome ${responsePayload.name}! Successful login via Google.`);
-    // Redirect to home or dashboard
-    // window.location.href = "index.html";
+    alert(`Welcome back, ${responsePayload.name}! Accessing premium travel services...`);
 }
 
 function parseJwt(token) {
@@ -21,54 +10,50 @@ function parseJwt(token) {
     var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-
     return JSON.parse(jsonPayload);
 };
 
-// UI Interactions
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Login page loaded and script initialized.");
-
-    if (window.location.protocol === 'file:') {
-        alert("Warning: Google Authentication (GIS) will NOT work when opening the file directly (file://). Please use a local web server (e.g., npx serve).");
-        console.warn("Google Google Identity Services (GIS) requires an http or https protocol.");
-    }
-
     const signUpBtn = document.getElementById('signUpBtn');
     const logInBtn = document.getElementById('logInBtn');
+    const toggleSlider = document.querySelector('.toggle-slider');
+    const formTitle = document.getElementById('formTitle');
+    const submitBtnText = document.querySelector('.btn-text');
+    const usernameGroup = document.getElementById('userGroup');
     const authForm = document.getElementById('authForm');
-    const submitBtn = document.querySelector('.submit-btn');
-    const formTitle = document.querySelector('.form-section h2');
 
+    // Toggle Logic
     signUpBtn.addEventListener('click', () => {
         signUpBtn.classList.add('active');
         logInBtn.classList.remove('active');
-        formTitle.textContent = "Begin Your Adventure";
-        submitBtn.textContent = "Let's Start";
-        // Show/hide fields if necessary for signup vs login
+        toggleSlider.style.transform = 'translateX(0)';
+        formTitle.textContent = "Create Account";
+        submitBtnText.textContent = "Let's Explore";
+        usernameGroup.style.display = 'block';
     });
 
     logInBtn.addEventListener('click', () => {
         logInBtn.classList.add('active');
         signUpBtn.classList.remove('active');
+        toggleSlider.style.transform = 'translateX(calc(100% + 6px))';
         formTitle.textContent = "Welcome Back";
-        submitBtn.textContent = "Log In";
-        // For login, maybe hide the username field or similar
+        submitBtnText.textContent = "Enter Kingdom";
+        usernameGroup.style.display = 'none';
     });
 
-    authForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        alert(`Traditional authentication for ${email} is not implemented in this demo. Please use Google Sign-In.`);
-    });
-
-    // Password view toggle
-    const toggleView = document.querySelector('.toggle-view');
+    // Password View Toggle
+    const viewToggle = document.querySelector('.view-toggle');
     const passwordInput = document.getElementById('password');
 
-    toggleView.addEventListener('click', () => {
+    viewToggle.addEventListener('click', () => {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
-        toggleView.textContent = type === 'password' ? '👁️' : '🔒';
+        viewToggle.textContent = type === 'password' ? '🔒' : '🔓';
+    });
+
+    // Form Submit
+    authForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Server connection pending. Please use high-speed Google Auth for now.");
     });
 });
