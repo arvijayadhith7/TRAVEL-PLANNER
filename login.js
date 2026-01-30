@@ -27,6 +27,13 @@ function parseJwt(token) {
 
 // UI Interactions
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Login page loaded and script initialized.");
+
+    if (window.location.protocol === 'file:') {
+        alert("Warning: Google Authentication (GIS) will NOT work when opening the file directly (file://). Please use a local web server (e.g., npx serve).");
+        console.warn("Google Google Identity Services (GIS) requires an http or https protocol.");
+    }
+
     const signUpBtn = document.getElementById('signUpBtn');
     const logInBtn = document.getElementById('logInBtn');
     const authForm = document.getElementById('authForm');
