@@ -68,11 +68,17 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(28, 31, 29, 0.8) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
     padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.brand-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
 .hero-overlay h1 {
