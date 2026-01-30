@@ -15,37 +15,41 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #111;
+    background: #050505;
+    background-image: radial-gradient(circle at 20% 20%, #1a1a1a 0%, #050505 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
+    color: #fff;
 }
 
-.mobile-canvas {
+.main-wrapper {
     width: 100%;
-    max-width: 430px;
-    /* iPhone 14 Pro Max width */
     height: 100%;
-    max-height: 932px;
-    /* iPhone 14 Pro Max height */
-    background: var(--bg-black);
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    height: 600px;
+    background: #0a0a0a;
+    border-radius: 32px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    border: 1px solid #1a1a1a;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    transition: all 0.3s ease;
 }
 
-.registration-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-/* Minecraft Hero Top */
-.hero-top {
-    flex: 0.4;
+/* Hero Section */
+.hero-aside {
+    flex: 1.2;
     background: url('assets/minecraft-bg.png') no-repeat center center;
     background-size: cover;
     position: relative;
@@ -53,107 +57,129 @@ body {
 
 .hero-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent 30%, var(--bg-black) 100%);
+    inset: 0;
+    background: linear-gradient(to top, #0a0a0a 0%, transparent 60%);
+    padding: 40px;
     display: flex;
-    align-items: flex-end;
-    padding: 30px;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .hero-overlay h1 {
-    color: var(--text-pure);
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.hero-overlay p {
+    font-size: 14px;
+    color: #aaa;
 }
 
 /* Form Section */
-.form-bottom {
-    flex: 0.6;
-    padding: 40px 30px;
+.form-aside {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .mobile-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
-.input-block {
-    background: var(--input-surface);
-    border: 1px solid #222;
+.input-row {
+    background: #151515;
+    border: 1px solid #252525;
     border-radius: 14px;
-    padding: 18px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 12px;
+    transition: border-color 0.3s;
 }
 
-.input-block .field-icon {
-    font-size: 18px;
-    opacity: 0.7;
+.input-row:focus-within {
+    border-color: #ff4d4d;
 }
 
-.input-block .prefix {
-    font-weight: 600;
-    color: var(--text-pure);
+.input-row .prefix {
+    font-weight: 700;
+    color: #ff4d4d;
+    padding-right: 12px;
     border-right: 1px solid #333;
-    padding-right: 10px;
 }
 
-.input-block input {
+.input-row input {
     background: transparent;
     border: none;
     outline: none;
-    color: var(--text-pure);
+    color: white;
     font-size: 16px;
     width: 100%;
 }
 
-.input-block input::placeholder {
-    color: #555;
-}
-
-.cta-primary {
-    background: var(--brand-red);
+.submit-btn {
+    background: #ff4d4d;
     color: white;
     border: none;
-    border-radius: 20px;
-    padding: 18px;
+    border-radius: 16px;
+    padding: 16px;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     margin-top: 10px;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.google-container {
-    margin-top: 5px;
+.submit-btn:hover {
+    background: #ff3333;
+    transform: translateY(-2px);
 }
 
-.helper-text {
+.google-host {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-link {
     text-align: center;
-    margin-top: 25px;
-    color: var(--text-dim);
+    margin-top: 24px;
     font-size: 14px;
+    color: #666;
 }
 
-.helper-text .highlight {
-    color: var(--brand-red);
+.footer-link span {
+    color: #ff4d4d;
     font-weight: 600;
     cursor: pointer;
 }
 
-/* Desktop Preview Adjustment */
-@media (min-width: 500px) {
-    body {
-        background-image: radial-gradient(circle at top right, #331e1e, #111);
+/* Mobile Responsive Optimization */
+@media (max-width: 850px) {
+    .auth-container {
+        flex-direction: column;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        max-width: 100%;
+        border: none;
     }
 
-    .mobile-canvas {
-        border-radius: 40px;
-        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
-        height: 90vh;
+    .hero-aside {
+        flex: 0.7;
+    }
+
+    .form-aside {
+        flex: 1;
+        padding: 40px 25px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 28px;
     }
 }

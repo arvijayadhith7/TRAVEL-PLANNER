@@ -12,44 +12,45 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
-<body class="mobile-theme">
-    <div class="mobile-canvas">
-        <div class="registration-card">
-            <!-- Top Section: Minecraft Hero -->
-            <div class="hero-top">
+<body>
+    <div class="main-wrapper">
+        <div class="auth-container">
+            <!-- Left Side: Web App Hero / Mobile Top -->
+            <div class="hero-aside">
                 <div class="hero-overlay">
                     <h1>Welcome back</h1>
+                    <p>Experience the future of travel automation.</p>
                 </div>
             </div>
 
-            <!-- Bottom Section: Form -->
-            <div class="form-bottom">
+            <!-- Right Side: Unified Form -->
+            <div class="form-aside">
                 <form id="authForm" class="mobile-form">
-                    <div class="input-block">
+                    <div class="input-row">
                         <span class="field-icon">👤</span>
                         <input type="text" id="username" placeholder="Username" required>
                     </div>
 
-                    <div class="input-block phone-input">
+                    <div class="input-row">
                         <span class="prefix">+91</span>
                         <input type="tel" id="mobile" placeholder="10-digit number" maxlength="10" pattern="[0-9]{10}"
                             required>
                     </div>
 
-                    <button type="submit" class="cta-primary">Continue with Mobile</button>
+                    <button type="submit" class="submit-btn">Continue with Mobile</button>
 
-                    <div class="google-container">
+                    <div class="google-host">
                         <div id="g_id_onload"
                             data-client_id="29992587510-rbgu8man8dujd2i3f0rr94o57vcn6qck.apps.googleusercontent.com"
                             data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse"
                             data-auto_prompt="false">
                         </div>
                         <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
-                            data-text="continue_with" data-size="large" data-logo_alignment="left" data-width="100%">
+                            data-text="continue_with" data-size="large" data-logo_alignment="left" data-width="320">
                         </div>
                     </div>
 
-                    <p class="helper-text">Don't have an account? <span class="highlight">Sign Up</span></p>
+                    <p class="footer-link">Don't have an account? <span>Sign Up</span></p>
                 </form>
             </div>
         </div>
