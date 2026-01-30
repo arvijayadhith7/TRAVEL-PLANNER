@@ -1,10 +1,13 @@
 :root {
-    --bg-black: #000000;
-    --brand-red: #ff4d4d;
-    --text-pure: #ffffff;
-    --text-dim: #888888;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.12);
+    --primary-green: #22E16B;
+    --soft-mint: #BFF4D2;
+    --bg-page: #F9FBF9;
+    --text-dark: #1C1F1D;
+    --text-light: #6B726E;
+    --borders: #E4E8E6;
+    --accent-gray: #DDE6E1;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.4);
 }
 
 * {
@@ -15,19 +18,13 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #000;
-    /* Immersive colorful background for glass effect visibility */
-    background-image:
-        radial-gradient(at 0% 0%, rgba(255, 77, 77, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(77, 121, 255, 0.15) 0px, transparent 50%),
-        radial-gradient(at 50% 100%, rgba(121, 77, 255, 0.1) 0px, transparent 50%);
+    background: var(--bg-page);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
-    color: #fff;
-    overflow: hidden;
+    color: var(--text-dark);
 }
 
 .main-wrapper {
@@ -45,13 +42,14 @@ body {
     max-width: 960px;
     height: 640px;
     background: var(--glass-bg);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border-radius: 32px;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
+    /* Softer shadow for light theme */
     overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 /* Hero Section */
@@ -60,13 +58,12 @@ body {
     background: url('assets/minecraft-bg.png') no-repeat center center;
     background-size: cover;
     position: relative;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(28, 31, 29, 0.8) 0%, transparent 60%);
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -76,24 +73,24 @@ body {
 .hero-overlay h1 {
     font-size: 38px;
     font-weight: 800;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
+    color: #fff;
     letter-spacing: -1.5px;
 }
 
 .hero-overlay p {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
 }
 
 /* Form Section */
 .form-aside {
     flex: 1;
-    padding: 60px 45px;
+    padding: 60px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
 }
 
 .mobile-form {
@@ -103,10 +100,10 @@ body {
 }
 
 .input-row {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #fff;
+    border: 1px solid var(--borders);
     border-radius: 16px;
-    padding: 16px 20px;
+    padding: 18px 22px;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -114,16 +111,15 @@ body {
 }
 
 .input-row:focus-within {
-    border-color: var(--brand-red);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 20px rgba(255, 77, 77, 0.1);
+    border-color: var(--primary-green);
+    box-shadow: 0 0 15px rgba(34, 225, 107, 0.1);
 }
 
 .input-row .prefix {
     font-weight: 800;
-    color: var(--brand-red);
+    color: var(--primary-green);
     padding-right: 15px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid var(--borders);
 }
 
 .input-row .field-icon {
@@ -135,13 +131,18 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    color: #fff;
+    color: var(--text-dark);
     font-size: 16px;
     width: 100%;
+    font-weight: 500;
+}
+
+.input-row input::placeholder {
+    color: var(--text-light);
 }
 
 .submit-btn {
-    background: var(--brand-red);
+    background: var(--primary-green);
     color: #fff;
     border: none;
     border-radius: 18px;
@@ -150,31 +151,31 @@ body {
     font-weight: 700;
     cursor: pointer;
     margin-top: 10px;
-    box-shadow: 0 10px 30px rgba(255, 77, 77, 0.3);
+    box-shadow: 0 10px 30px rgba(34, 225, 107, 0.2);
     transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background: #ff3333;
+    filter: brightness(1.05);
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(255, 77, 77, 0.4);
+    box-shadow: 0 15px 40px rgba(34, 225, 107, 0.3);
 }
 
 .google-host {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
 }
 
 .footer-link {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 30px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-light);
 }
 
 .footer-link span {
-    color: var(--brand-red);
+    color: var(--primary-green);
     font-weight: 700;
     cursor: pointer;
 }
@@ -192,7 +193,6 @@ body {
 
     .hero-aside {
         flex: 0.8;
-        border-right: none;
     }
 
     .form-aside {

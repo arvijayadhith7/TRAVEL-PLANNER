@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voyanix AI - Register</title>
+    <title>Voyanix AI - Travel Automation</title>
     <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
@@ -18,8 +19,8 @@
             <!-- Left Side: Web App Hero / Mobile Top -->
             <div class="hero-aside">
                 <div class="hero-overlay">
-                    <h1>Welcome back</h1>
-                    <p>Experience the future of travel automation.</p>
+                    <h1>Voyanix AI</h1>
+                    <p>Experience the next generation of travel automation with precision.</p>
                 </div>
             </div>
 
@@ -33,11 +34,11 @@
 
                     <div class="input-row">
                         <span class="prefix">+91</span>
-                        <input type="tel" id="mobile" placeholder="10-digit number" maxlength="10" pattern="[0-9]{10}"
+                        <input type="tel" id="mobile" placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}"
                             required>
                     </div>
 
-                    <button type="submit" class="submit-btn">Continue with Mobile</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">Continue with Mobile</button>
 
                     <div class="google-host">
                         <div id="g_id_onload"
@@ -45,12 +46,12 @@
                             data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse"
                             data-auto_prompt="false">
                         </div>
-                        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
+                        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline"
                             data-text="continue_with" data-size="large" data-logo_alignment="left" data-width="320">
                         </div>
                     </div>
 
-                    <p class="footer-link">Don't have an account? <span>Sign Up</span></p>
+                    <p class="footer-link">Don't have an account? <span id="toggleSignUp">Sign Up</span></p>
                 </form>
             </div>
         </div>
