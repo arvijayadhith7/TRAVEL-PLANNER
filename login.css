@@ -105,10 +105,9 @@ body {
 }
 
 .form-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 24px;
-    margin-bottom: 12px;
+    width: 160px;
+    height: auto;
+    margin-bottom: 20px;
     object-fit: contain;
     background: transparent;
 }
