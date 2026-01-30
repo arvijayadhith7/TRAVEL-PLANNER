@@ -1,7 +1,7 @@
 function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
     const responsePayload = parseJwt(response.credential);
-    alert(`Welcome back, ${responsePayload.name}! Accessing Voyanix AI...`);
+    alert(`Welcome back, ${responsePayload.name}! Accessing Voyanix Mobile...`);
 }
 
 function parseJwt(token) {
@@ -15,37 +15,23 @@ function parseJwt(token) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const authForm = document.getElementById('authForm');
-    const toggleSignUp = document.getElementById('toggleSignUp');
-    const formTitle = document.querySelector('.form-header h1');
-    const submitBtn = document.querySelector('.btn-primary');
+    const mobileInput = document.getElementById('mobile');
 
-    let isLogin = true;
-
-    toggleSignUp.addEventListener('click', (e) => {
-        e.preventDefault();
-        isLogin = !isLogin;
-
-        if (isLogin) {
-            formTitle.textContent = "Welcome back";
-            submitBtn.textContent = "Continue with Email";
-            toggleSignUp.textContent = "Sign Up";
-            document.querySelector('.footer-note').innerHTML = `Don't have an account? <a href="#" id="toggleSignUp">Sign Up</a>`;
-        } else {
-            formTitle.textContent = "Create account";
-            submitBtn.textContent = "Register with Email";
-            toggleSignUp.textContent = "Log In";
-            document.querySelector('.footer-note').innerHTML = `Already have an account? <a href="#" id="toggleSignUp">Log In</a>`;
-        }
-
-        // Re-attach event listener since innerHTML replaced it
-        document.getElementById('toggleSignUp').addEventListener('click', (newE) => {
-            newE.preventDefault();
-            toggleSignUp.click();
-        });
+    // Restrict mobile input to numbers only and max 10 chars
+    mobileInput.addEventListener('input', (e) => {
+        mobileInput.value = mobileInput.value.replace(/[^0-9]/g, '');
     });
 
     authForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert("Form submission is currently simulation-only. Please use Google Auth.");
+        const username = document.getElementById('username').value;
+        const mobile = mobileInput.value;
+
+        if (mobile.length !== 10) {
+            alert("Please enter a valid 10-digit mobile number.");
+            return;
+        }
+
+        alert(`Verification code sent to +91 ${mobile} for user ${username}.`);
     });
 });

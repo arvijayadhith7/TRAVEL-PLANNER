@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Back - Travel Voyanix</title>
+    <title>Voyanix AI - Register</title>
     <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,54 +12,44 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
-<body class="dark-theme">
-    <div class="main-container">
-        <div class="auth-card">
-            <!-- Left Panel: Immersive Image -->
-            <div class="card-left">
-                <div class="image-overlay">
-                    <div class="logo-box">
-                        <span class="logo-emoji">🔥</span>
-                        <div class="logo-text">
-                            <h3>Voyanix AI</h3>
-                            <p>Your all-in-one travel automation.</p>
-                        </div>
-                    </div>
+<body class="mobile-theme">
+    <div class="mobile-canvas">
+        <div class="registration-card">
+            <!-- Top Section: Minecraft Hero -->
+            <div class="hero-top">
+                <div class="hero-overlay">
+                    <h1>Welcome back</h1>
                 </div>
             </div>
 
-            <!-- Right Panel: Form -->
-            <div class="card-right">
-                <header class="form-header">
-                    <h1>Welcome back</h1>
-                </header>
-
-                <form id="authForm" class="dark-form">
-                    <div class="input-field">
-                        <span class="icon">📧</span>
-                        <input type="email" id="email" placeholder="Email address" required>
+            <!-- Bottom Section: Form -->
+            <div class="form-bottom">
+                <form id="authForm" class="mobile-form">
+                    <div class="input-block">
+                        <span class="field-icon">👤</span>
+                        <input type="text" id="username" placeholder="Username" required>
                     </div>
 
-                    <div class="input-field">
-                        <span class="icon">🔒</span>
-                        <input type="password" id="password" placeholder="Password" required>
+                    <div class="input-block phone-input">
+                        <span class="prefix">+91</span>
+                        <input type="tel" id="mobile" placeholder="10-digit number" maxlength="10" pattern="[0-9]{10}"
+                            required>
                     </div>
 
-                    <button type="submit" class="btn-primary">Continue with Email</button>
+                    <button type="submit" class="cta-primary">Continue with Mobile</button>
 
-                    <div class="google-button-container">
+                    <div class="google-container">
                         <div id="g_id_onload"
                             data-client_id="29992587510-rbgu8man8dujd2i3f0rr94o57vcn6qck.apps.googleusercontent.com"
                             data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse"
                             data-auto_prompt="false">
                         </div>
-                        <div class="g_id_signin custom-google-btn" data-type="standard" data-shape="pill"
-                            data-theme="filled_black" data-text="continue_with" data-size="large"
-                            data-logo_alignment="left" data-width="320">
+                        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
+                            data-text="continue_with" data-size="large" data-logo_alignment="left" data-width="100%">
                         </div>
                     </div>
 
-                    <p class="footer-note">Don't have an account? <a href="#" id="toggleSignUp">Sign Up</a></p>
+                    <p class="helper-text">Don't have an account? <span class="highlight">Sign Up</span></p>
                 </form>
             </div>
         </div>
