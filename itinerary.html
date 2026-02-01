@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your AI Itinerary - TRIPIFY</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="itinerary.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="itinerary-navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/tripify_logo_latest.png" alt="TRIPIFY" class="logo-img">
+                <span class="logo-text">TRIPIFY</span>
+            </a>
+
+            <div class="trip-info-pill">
+                <span class="trip-destination" id="tripDestination">📍 Ooty</span>
+                <span class="trip-dates" id="tripDates">Feb 15 - 18</span>
+                <span class="trip-category" id="tripCategory">💎 Luxury</span>
+            </div>
+
+            <nav class="nav-actions">
+                <button class="share-btn" id="shareBtn">📤 Share</button>
+                <button class="print-btn" id="printBtn">🖨️ Print</button>
+                <button class="theme-toggle-btn" id="themeToggle">☀️</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="itinerary-main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="itinerary-hero">
+                <div class="hero-content">
+                    <span class="ai-generated-badge">🤖 AI Generated Itinerary</span>
+                    <h1>Your <span class="destination-name" id="heroDestination">Ooty</span> Adventure</h1>
+                    <p class="hero-subtitle" id="heroSubtitle">3 days of curated experiences based on your preferences
+                    </p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalDays">3</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalSpots">5</span>
+                        <span class="stat-label">Places</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalMeals">6</span>
+                        <span class="stat-label">Meals</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="itinerary-grid">
+                <!-- Day Selector & Timeline -->
+                <section class="timeline-section">
+                    <!-- Day Tabs -->
+                    <div class="day-tabs" id="dayTabs">
+                        <!-- Generated dynamically -->
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="timeline-container" id="timelineContainer">
+                        <!-- Generated dynamically -->
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="day-navigation">
+                        <button class="nav-btn prev" id="prevDay" disabled>← Previous Day</button>
+                        <button class="nav-btn next" id="nextDay">Next Day →</button>
+                    </div>
+                </section>
+
+                <!-- Sidebar -->
+                <aside class="itinerary-sidebar">
+                    <!-- Weather Card -->
+                    <div class="weather-card" id="weatherCard">
+                        <h3>🌤️ Weather Forecast</h3>
+                        <div class="weather-main">
+                            <span class="weather-icon" id="weatherIcon">☀️</span>
+                            <span class="weather-temp" id="weatherTemp">22°C</span>
+                        </div>
+                        <p class="weather-desc" id="weatherDesc">Pleasant weather, perfect for sightseeing!</p>
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <span>💧 Humidity</span>
+                                <span id="humidity">65%</span>
+                            </div>
+                            <div class="weather-detail">
+                                <span>💨 Wind</span>
+                                <span id="wind">12 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget Summary -->
+                    <div class="budget-summary-card">
+                        <h3>💰 Trip Budget</h3>
+                        <div class="budget-category" id="budgetCategoryDisplay">
+                            <span class="budget-icon">💎</span>
+                            <span class="budget-text">Luxury Experience</span>
+                        </div>
+                        <div class="budget-breakdown">
+                            <div class="breakdown-item">
+                                <span>🏨 Accommodation</span>
+                                <span class="included">Included</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>🎫 Activities</span>
+                                <span id="activitiesCost">~₹500</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>🍽️ Dining</span>
+                                <span id="diningCost">~₹2,000/day</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Tips -->
+                    <div class="ai-tips-card">
+                        <h3>🤖 AI Travel Tips</h3>
+                        <ul class="tips-list" id="tipsList">
+                            <li>Start early at Botanical Gardens to avoid crowds</li>
+                            <li>Book Nilgiri toy train tickets in advance</li>
+                            <li>Carry a light jacket - evenings can be chilly</li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <button class="action-btn" id="editTripBtn">✏️ Edit Trip</button>
+                        <button class="action-btn primary" id="saveItineraryBtn">💾 Save Itinerary</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Action Bar (Mobile) -->
+    <div class="bottom-action-bar">
+        <button class="bottom-action share">📤 Share</button>
+        <button class="bottom-action save">💾 Save</button>
+        <button class="bottom-action edit">✏️ Edit</button>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 TRIPIFY AI. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="tamilnadu-tourism-db.js"></script>
+    <script src="itinerary.js"></script>
+</body>
+
+</html>

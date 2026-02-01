@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIPIFY - Explore the world, AI-style.</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<body>
+    <div class="dot-background"></div>
+
+    <!-- Decorative Floating Icons -->
+    <div class="floating-icon icon-plane">✈️</div>
+    <div class="floating-icon icon-train">🚆</div>
+    <div class="floating-icon icon-car">🚗</div>
+    <div class="floating-icon icon-bus">🚌</div>
+    <div class="floating-icon icon-bike">🚲</div>
+    <div class="floating-icon icon-map">🗺️</div>
+    <div class="floating-icon icon-umbrella">⛱️</div>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/tripify_logo_latest.png" alt="TRIPIFY Logo" class="logo-img">
+                <span class="logo-text">TRIPIFY</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#">How it Works</a>
+                <a href="#">Popular Destinations</a>
+                <a href="#">My Trips</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="themeToggle" title="Toggle Theme">☀️</button>
+                <!-- Login removed -->
+            </div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="container">
+            <section class="hero-content">
+                <h1>Explore the world, <span class="text-gradient">AI-style.</span></h1>
+                <p>Tell us your preferences and we'll craft the perfect itinerary in seconds. Precision travel planning
+                    at your fingertips.</p>
+
+                <!-- Mobile animated travel icons -->
+                <div class="mobile-travel-icons">
+                    <span class="mobile-icon icon-1">✈️</span>
+                    <span class="mobile-icon icon-2">🏝️</span>
+                    <span class="mobile-icon icon-3">🗺️</span>
+                    <span class="mobile-icon icon-4">🧳</span>
+                    <span class="mobile-icon icon-5">⛰️</span>
+                </div>
+            </section>
+
+            <section class="planner-widget">
+                <div class="planner-container">
+                    <div class="planner-field field-destination">
+                        <label>DESTINATION</label>
+                        <div class="input-with-icon">
+                            <span class="icon">📍</span>
+                            <input type="text" id="destination" placeholder="Where to?">
+                        </div>
+                    </div>
+
+                    <div class="planner-divider"></div>
+
+                    <div class="planner-field field-budget">
+                        <label>BUDGET</label>
+                        <div class="input-with-icon">
+                            <span class="icon">💵</span>
+                            <select id="budget">
+                                <option value="economy">Economy</option>
+                                <option value="mid" selected>Mid-range</option>
+                                <option value="luxury">Luxury</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="planner-divider"></div>
+
+                    <div class="planner-field field-duration">
+                        <label>DURATION</label>
+                        <div class="input-with-icon">
+                            <span class="icon">📅</span>
+                            <input type="text" id="duration" placeholder="Pick Dates">
+                        </div>
+                    </div>
+
+                    <button class="btn-plan" id="planBtn">
+                        Plan My Trip <span class="sparkle">✨</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="popular-tags">
+                <span class="tag-label">Trending Now:</span>
+                <div class="tags-container">
+                    <a href="#" class="tag">Ooty</a>
+                    <a href="#" class="tag">Kodaikanal</a>
+                    <a href="#" class="tag">Mahabalipuram</a>
+                    <a href="#" class="tag">Rameswaram</a>
+                    <a href="#" class="tag">Kanyakumari</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 TRIPIFY Automation. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="tamilnadu-tourism-db.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

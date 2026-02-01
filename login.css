@@ -1,232 +1,248 @@
 :root {
-    --primary-green: #22E16B;
-    --soft-mint: #BFF4D2;
-    --bg-dark: #000000;
-    --text-pure: #ffffff;
-    --text-dim: #888888;
-    --borders: rgba(255, 255, 255, 0.1);
-    --accent-gray: #DDE6E1;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.12);
+    --bg-color: #000000;
+    /* Deep black background */
+    --card-bg: #000000;
+    /* Card is also black/translucent */
+    --input-bg: #131313;
+    /* Very dark input bg */
+    --input-border: #2A2A2A;
+    /* Subtle border */
+    --text-white: #FFFFFF;
+    --text-muted: #666666;
+    --btn-red: #E5484D;
+    /* The vibrant red */
+    --btn-dark: #0A0A0A;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-dark);
-    /* Immersive colorful background for glass effect visibility */
-    background-image:
-        radial-gradient(at 0% 0%, rgba(34, 225, 107, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(77, 121, 255, 0.1) 0px, transparent 50%),
-        radial-gradient(at 50% 100%, rgba(34, 225, 107, 0.05) 0px, transparent 50%);
+    background: var(--bg-color);
+    background-image: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(30, 30, 30) 90.2%);
+    /* Subtle radial for depth */
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0;
-    color: var(--text-pure);
-    overflow: hidden;
+    justify-content: center;
+    color: white;
 }
 
 .main-wrapper {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 20px;
 }
 
-.auth-container {
+.login-container {
+    background: #000000;
+    border-radius: 40px;
+    /* Large rounded corners as seen in image */
     display: flex;
     width: 100%;
-    max-width: 960px;
-    height: 640px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(35px) saturate(150%);
-    -webkit-backdrop-filter: blur(35px) saturate(150%);
-    border-radius: 32px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+    max-width: 1100px;
+    height: 700px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    /* Deep shadow */
+    border: 1px solid #1A1A1A;
+    /* Subtle border for definition */
     overflow: hidden;
-    transition: transform 0.4s ease;
-}
-
-/* Hero Section */
-.hero-aside {
-    flex: 1.3;
-    background: url('assets/minecraft-bg.png') no-repeat center center;
-    background-size: cover;
     position: relative;
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(28, 31, 29, 0.8) 0%, transparent 60%);
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.hero-overlay h1 {
-    font-size: 38px;
-    font-weight: 800;
-    margin-bottom: 5px;
-    color: #fff;
-    letter-spacing: -1.5px;
-}
-
-.hero-overlay p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
+/* Left Image Section */
+.hero-aside {
+    flex: 1.2;
+    /* Slightly wider image area */
+    background: url('assets/login-bg.png') no-repeat center center/cover;
+    position: relative;
+    margin: 20px;
+    /* The "floating" card look inside the black container */
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 /* Form Section */
 .form-aside {
     flex: 1;
-    padding: 60px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
+    padding: 60px 80px;
+    background: #000000;
+    position: relative;
 }
 
-.form-header {
+/* Typography */
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 40px;
     text-align: center;
-    margin-bottom: 35px;
-}
-
-.form-logo {
-    width: 160px;
-    height: auto;
-    margin-bottom: 20px;
-    object-fit: contain;
-    background: transparent;
-}
-
-.form-header h2 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text-pure);
+    /* Centered "Welcome back" */
     letter-spacing: -0.5px;
 }
 
-.mobile-form {
+.auth-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    /* Spacing between inputs */
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    /* Center form */
 }
 
-.input-row {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--borders);
-    border-radius: 16px;
-    padding: 18px 22px;
+/* Inputs */
+.input-group {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
-.input-row:focus-within {
-    border-color: var(--primary-green);
-    box-shadow: 0 0 15px rgba(34, 225, 107, 0.1);
+.input-group:focus-within {
+    border-color: #555;
+    background: #1A1A1A;
 }
 
-.input-row .prefix {
-    font-weight: 800;
-    color: var(--primary-green);
-    padding-right: 15px;
-    border-right: 1px solid var(--borders);
+.field-icon {
+    font-size: 16px;
+    color: #555;
+    /* Muted icon color */
+    filter: invert(0.3);
+    /* Ensure visibility on dark */
 }
 
-.input-row .field-icon {
-    font-size: 20px;
-    opacity: 0.8;
-}
-
-.input-row input {
+.input-group input {
     background: transparent;
     border: none;
     outline: none;
-    color: var(--text-pure);
-    font-size: 16px;
+    color: #DDD;
+    font-size: 14px;
     width: 100%;
     font-weight: 500;
 }
 
-.input-row input::placeholder {
-    color: var(--text-light);
+.input-group input::placeholder {
+    color: #444;
 }
 
+/* Buttons */
 .submit-btn {
-    background: var(--primary-green);
-    color: #fff;
+    background: linear-gradient(90deg, #FF5F5F, #E5484D);
+    /* Gradient matching the red button */
+    color: white;
     border: none;
-    border-radius: 18px;
-    padding: 18px;
-    font-size: 16px;
+    padding: 16px;
+    border-radius: 30px;
+    /* Pill shape */
     font-weight: 700;
+    font-size: 14px;
     cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 10px 30px rgba(34, 225, 107, 0.2);
-    transition: all 0.3s ease;
+    margin-top: 20px;
+    transition: all 0.3s;
+    width: 100%;
 }
 
 .submit-btn:hover {
-    filter: brightness(1.05);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(34, 225, 107, 0.3);
+    box-shadow: 0 0 20px rgba(229, 72, 77, 0.4);
+    transform: translateY(-1px);
 }
 
-.google-host {
-    margin-top: 15px;
+.google-btn {
+    background: #0A0A0A;
+    border: 1px solid #333;
+    color: white;
+    padding: 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
     display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    width: 100%;
 }
 
-.footer-link {
+.google-btn:hover {
+    background: #111;
+    border-color: #555;
+}
+
+.google-icon {
+    font-family: 'Inter', sans-serif;
+    /* Placeholder for G icon */
+    font-weight: 900;
+    background: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 16px;
+}
+
+/* Footer Link */
+.footer-text {
     text-align: center;
     margin-top: 30px;
-    font-size: 14px;
-    color: var(--text-light);
+    font-size: 13px;
+    color: #555;
 }
 
-.footer-link span {
-    color: var(--primary-green);
-    font-weight: 700;
+.footer-text a {
+    color: var(--btn-red);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 20px;
     cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s;
 }
 
-/* Mobile Responsive Optimization */
+.theme-toggle:hover {
+    opacity: 1;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 900px) {
-    .auth-container {
+    .login-container {
         flex-direction: column;
-        height: 100vh;
-        max-height: 100vh;
-        border-radius: 0;
-        max-width: 100%;
-        border: none;
+        height: auto;
+        border-radius: 20px;
+        max-width: 450px;
     }
 
     .hero-aside {
-        flex: 0.8;
+        display: none;
+        /* Hide image on mobile for compactness */
     }
 
     .form-aside {
-        flex: 1;
         padding: 40px 30px;
-    }
-
-    .hero-overlay h1 {
-        font-size: 30px;
     }
 }
