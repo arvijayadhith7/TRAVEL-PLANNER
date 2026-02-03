@@ -1,0 +1,372 @@
+/* Summary Page Styles */
+
+.summary-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 32px;
+}
+
+/* Summary Cards */
+.summary-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 32px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.change-link {
+    font-size: 14px;
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+/* Hotel Block */
+.hotel-block {
+    display: flex;
+    gap: 20px;
+}
+
+.hotel-block img {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.hotel-info {
+    flex: 1;
+}
+
+.hotel-info .stars {
+    color: #f59e0b;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.hotel-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+}
+
+.hotel-info .address {
+    font-size: 12px;
+    color: var(--text-light);
+    margin: 0 0 12px 0;
+}
+
+.meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.price-green {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-green);
+}
+
+.price-green .small {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* Timeline Feed */
+.timeline-feed {
+    position: relative;
+    padding-left: 20px;
+    /* Vertical Line handled by pseudo-element on items usually, or a border-left here */
+    border-left: 2px dashed #e5e7eb;
+    margin-left: 10px;
+}
+
+.spot-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0px;
+    position: relative;
+    padding-left: 24px;
+}
+
+.spot-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    /* Center on the border-left */
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-green);
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--primary-green);
+}
+
+.spot-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.spot-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spot-details {
+    flex: 1;
+    background: #f9fafb;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.spot-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.spot-row h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cost {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.spot-details .desc {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-light);
+}
+
+/* Transit */
+.transit-line {
+    padding: 24px 0 24px 24px;
+    color: var(--text-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Add Button */
+.add-spots-btn {
+    width: calc(100% - 24px);
+    margin-left: 24px;
+    background: transparent;
+    border: 2px dashed #e5e7eb;
+    padding: 12px;
+    border-radius: 8px;
+    color: var(--text-light);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s;
+}
+
+.add-spots-btn:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+
+/* Right Sidebar */
+.price-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.price-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+}
+
+.price-card h2 {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.price-row-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.divider-horiz {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 20px 0;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.green-total {
+    color: var(--primary-green);
+}
+
+/* Budget Bar */
+.budget-section {
+    background: #f0fdf4;
+    /* Light green bg */
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid #dcfce7;
+}
+
+.budget-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.status {
+    color: var(--text-light);
+}
+
+.usage {
+    color: var(--primary-green);
+}
+
+.progress-track {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-green);
+}
+
+.budget-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+
+.budget-message {
+    font-size: 11px;
+    line-height: 1.4;
+    color: #166534;
+    /* Dark green text */
+    margin: 0;
+}
+
+.btn-full-width {
+    width: 100%;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+
+.disclaimer {
+    font-size: 10px;
+    color: var(--text-light);
+    text-align: center;
+    margin: 0;
+}
+
+/* AI Tip */
+.ai-tip-card {
+    background: #ecfccb;
+    /* Different lime/green tint */
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.tip-icon {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #65a30d;
+    flex-shrink: 0;
+}
+
+.tip-content h4 {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+    font-weight: 800;
+    color: #365314;
+}
+
+.tip-content p {
+    margin: 0;
+    font-size: 11px;
+    color: #3f6212;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .summary-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .price-sidebar {
+        position: static;
+    }
+}

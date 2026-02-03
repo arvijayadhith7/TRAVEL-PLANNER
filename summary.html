@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Trip - TripAI</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="hotels.css"> <!-- Header/Layout reuse -->
+    <link rel="stylesheet" href="summary.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header Reuse -->
+    <header class="app-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-clover" style="color: var(--primary-green);"></i>
+                <span>TripAI</span>
+            </a>
+            <div class="search-summary">
+                <span class="value">Tamil Nadu Planner / Checkout</span>
+            </div>
+            <div class="header-right">
+                <a href="#">Explore</a>
+                <a href="#">My Trips</a>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main-content summary-layout">
+
+        <!-- Main Panel (Left) -->
+        <div class="summary-feed">
+            <h1 class="page-title">Review your trip summary</h1>
+
+            <!-- Hotel Section -->
+            <section class="summary-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-bed"></i> Selected Hotel</h2>
+                    <a href="#" class="change-link">Change</a>
+                </div>
+                <div class="hotel-block">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500" alt="ITC Grand Chola">
+                    <div class="hotel-info">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i> (452 reviews)</div>
+                        <h3>ITC Grand Chola</h3>
+                        <p class="address">Guindy, Chennai, Tamil Nadu</p>
+                        <div class="meta">
+                            <span><i class="fa-regular fa-calendar"></i> Oct 12 - Oct 16 (4 nights)</span>
+                            <span><i class="fa-solid fa-user"></i> 2 Adults</span>
+                        </div>
+                        <div class="price-green">₹50,000 <span class="small">total</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spots Section -->
+            <section class="summary-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-compass"></i> Selected Spots</h2>
+                    <a href="#" class="change-link">Edit Route</a>
+                </div>
+
+                <div class="timeline-feed">
+
+                    <!-- Spot 1 -->
+                    <div class="spot-item">
+                        <div class="spot-img"><img
+                                src="https://images.unsplash.com/photo-1582510003544-4d00b7f00d84?w=400"
+                                alt="Meenakshi Temple"></div>
+                        <div class="spot-details">
+                            <div class="spot-row">
+                                <h3>Meenakshi Temple</h3>
+                                <span class="cost">₹50</span>
+                            </div>
+                            <p class="desc">Madurai • 2 hours stay</p>
+                        </div>
+                    </div>
+
+                    <!-- Transit -->
+                    <div class="transit-line">
+                        <span class="transit-time">45 MIN TRANSIT</span>
+                    </div>
+
+                    <!-- Spot 2 -->
+                    <div class="spot-item">
+                        <div class="spot-img"><img
+                                src="https://images.unsplash.com/photo-1584295622378-5a331df40050?w=400"
+                                alt="Marina Beach"></div>
+                        <div class="spot-details">
+                            <div class="spot-row">
+                                <h3>Marina Beach</h3>
+                                <span class="cost">Free</span>
+                            </div>
+                            <p class="desc">Chennai • 3 hours stay</p>
+                        </div>
+                    </div>
+
+                    <!-- Transit -->
+                    <div class="transit-line">
+                        <span class="transit-time">1 HR TRANSIT</span>
+                    </div>
+
+                    <!-- Spot 3 -->
+                    <div class="spot-item">
+                        <div class="spot-img"><img
+                                src="https://images.unsplash.com/photo-1620025740448-6a3d9063c0a5?w=400"
+                                alt="Brihadeeswarar"></div>
+                        <div class="spot-details">
+                            <div class="spot-row">
+                                <h3>Brihadeeswarar Temple</h3>
+                                <span class="cost">Free</span>
+                            </div>
+                            <p class="desc">Thanjavur • 1.5 hours stay</p>
+                        </div>
+                    </div>
+
+                    <!-- Add Button -->
+                    <button class="add-spots-btn">
+                        <i class="fa-solid fa-circle-plus"></i> Add more spots to your itinerary
+                    </button>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar Summary (Right) -->
+        <aside class="price-sidebar">
+            <div class="price-card">
+                <h2>Price Summary</h2>
+
+                <div class="price-row-item">
+                    <span>Hotels (4 nights)</span>
+                    <span>₹50,000</span>
+                </div>
+                <div class="price-row-item">
+                    <span>Est. Food Cost <i class="fa-solid fa-circle-info"></i></span>
+                    <span>₹12,000</span>
+                </div>
+                <div class="price-row-item">
+                    <span>Activity Tickets</span>
+                    <span>₹2,500</span>
+                </div>
+                <div class="price-row-item">
+                    <span>Platform Service Fee</span>
+                    <span>₹500</span>
+                </div>
+
+                <div class="divider-horiz"></div>
+
+                <div class="total-row">
+                    <span>Total Trip Cost</span>
+                    <span class="green-total">₹65,000</span>
+                </div>
+
+                <!-- Budget Bar -->
+                <div class="budget-section">
+                    <div class="budget-labels">
+                        <span class="status">TRIP BUDGET STATUS</span>
+                        <span class="usage">85% USED</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <div class="budget-meta">
+                        <span>Spent: ₹65k</span>
+                        <span>Budget: ₹75k</span>
+                    </div>
+                    <p class="budget-message"><strong>Great news!</strong> You are ₹10,000 under your initial budget.
+                    </p>
+                </div>
+
+                <a href="itinerary.html" class="btn btn-primary btn-full-width">
+                    Proceed to Itinerary <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <p class="disclaimer">Free cancellation for most bookings until Oct 10th.</p>
+            </div>
+
+            <!-- AI Tip -->
+            <div class="ai-tip-card">
+                <div class="tip-icon"><i class="fa-solid fa-robot"></i></div>
+                <div class="tip-content">
+                    <h4>AI Smart Tip</h4>
+                    <p>Booking a private cab for the Golden Triangle (Chennai-Mahabalipuram-Kanchipuram) saves 30%.</p>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stays in Tamil Nadu - TripAI</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="hotels.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header (Specific for App Pages) -->
+    <header class="app-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-clover" style="color: var(--primary-green);"></i>
+                <span>TripAI</span>
+            </a>
+
+            <!-- Search Summary Pill -->
+            <div class="search-summary">
+                <div class="search-info">
+                    <span class="label">DESTINATION</span>
+                    <span class="value">Chennai, Tamil Nadu • Oct 12 - Oct 18</span>
+                </div>
+                <div class="divider-vertical"></div>
+                <div class="guest-info">
+                    <span>2 Guests</span>
+                </div>
+                <button class="edit-btn"><i class="fa-solid fa-pencil"></i></button>
+            </div>
+
+            <div class="header-right">
+                <a href="#">Explore</a>
+                <a href="#">My Trips</a>
+                <a href="#">Support</a>
+                <i class="fa-regular fa-bell icon-btn"></i>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main-content">
+
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button class="reset-btn">Reset All</button>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <h3><i class="fa-solid fa-money-bill-1"></i> Price per night</h3>
+                <div class="range-slider">
+                    <!-- Visual slider only for demo -->
+                    <div class="slider-track">
+                        <div class="slider-fill"></div>
+                        <div class="slider-thumb left"></div>
+                        <div class="slider-thumb right"></div>
+                    </div>
+                    <div class="price-labels">
+                        <span>₹2,000</span>
+                        <span>₹15,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rating Filter -->
+            <div class="filter-group">
+                <h3><i class="fa-solid fa-star"></i> Property Rating</h3>
+                <label class="checkbox-row">
+                    <input type="checkbox" checked>
+                    <span class="custom-check"></span>
+                    <span>5 Stars</span>
+                </label>
+                <label class="checkbox-row">
+                    <input type="checkbox" checked>
+                    <span class="custom-check"></span>
+                    <span>4 Stars</span>
+                </label>
+                <label class="checkbox-row">
+                    <input type="checkbox">
+                    <span class="custom-check"></span>
+                    <span>3 Stars</span>
+                </label>
+            </div>
+
+            <!-- Amenities Filter -->
+            <div class="filter-group">
+                <h3><i class="fa-solid fa-wifi"></i> Amenities</h3>
+                <label class="checkbox-row">
+                    <input type="checkbox" checked>
+                    <span class="custom-check"></span>
+                    <span>Free Wi-Fi</span>
+                </label>
+                <label class="checkbox-row">
+                    <input type="checkbox">
+                    <span class="custom-check"></span>
+                    <span>Swimming Pool</span>
+                </label>
+                <label class="checkbox-row">
+                    <input type="checkbox" checked>
+                    <span class="custom-check"></span>
+                    <span>Breakfast Included</span>
+                </label>
+            </div>
+
+            <button class="btn btn-primary apply-btn">Apply Filters</button>
+        </aside>
+
+        <!-- Results Grid -->
+        <section class="results-area">
+            <div class="results-header">
+                <h1>Stays in Tamil Nadu <span class="count">(42 results)</span></h1>
+                <div class="sort-dropdown">
+                    <span>Sort by: <strong>Recommended</strong></span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <div class="hotel-grid">
+
+                <!-- Hotel Card 1 -->
+                <div class="hotel-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500"
+                            alt="ITC Grand Chola">
+                        <span class="badge-ai">AI PICK</span>
+                        <button class="wishlist-btn"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-top">
+                            <h3>ITC Grand Chola</h3>
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.9</div>
+                        </div>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Guindy, Chennai</p>
+
+                        <div class="price-row">
+                            <div class="price">
+                                <span class="amount">₹12,500</span> <span class="unit">/night</span>
+                            </div>
+                            <div class="total-price">
+                                <span class="label">TOTAL (6 NIGHTS)</span>
+                                <span class="value">₹75,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <a href="attractions.html" class="btn btn-primary add-btn">
+                            <i class="fa-solid fa-circle-plus"></i> Add to Trip
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 2 -->
+                <div class="hotel-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500"
+                            alt="Radisson Blu">
+                        <button class="wishlist-btn"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-top">
+                            <h3>Radisson Blu Resort</h3>
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.7</div>
+                        </div>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Mamallapuram</p>
+
+                        <div class="price-row">
+                            <div class="price">
+                                <span class="amount">₹8,500</span> <span class="unit">/night</span>
+                            </div>
+                            <div class="total-price">
+                                <span class="label">TOTAL (6 NIGHTS)</span>
+                                <span class="value">₹51,000</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary add-btn">
+                            <i class="fa-solid fa-circle-plus"></i> Add to Trip
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 3 -->
+                <div class="hotel-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500" alt="Savoy">
+                        <button class="wishlist-btn"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-top">
+                            <h3>Savoy - IHCL SeleQtions</h3>
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.8</div>
+                        </div>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Ooty, Tamil Nadu</p>
+
+                        <div class="price-row">
+                            <div class="price">
+                                <span class="amount">₹9,200</span> <span class="unit">/night</span>
+                            </div>
+                            <div class="total-price">
+                                <span class="label">TOTAL (6 NIGHTS)</span>
+                                <span class="value">₹55,200</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary add-btn">
+                            <i class="fa-solid fa-circle-plus"></i> Add to Trip
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hotel Card 4 -->
+                <div class="hotel-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500" alt="Dvara">
+                        <span class="badge-ai">AI PICK</span>
+                        <button class="wishlist-btn"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-top">
+                            <h3>Great Trails Yercaud</h3>
+                            <div class="rating"><i class="fa-solid fa-star"></i> 4.5</div>
+                        </div>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Yercaud, Salem</p>
+
+                        <div class="price-row">
+                            <div class="price">
+                                <span class="amount">₹6,500</span> <span class="unit">/night</span>
+                            </div>
+                            <div class="total-price">
+                                <span class="label">TOTAL (6 NIGHTS)</span>
+                                <span class="value">₹39,000</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary add-btn">
+                            <i class="fa-solid fa-circle-plus"></i> Add to Trip
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="load-more">
+                <button class="btn-secondary">Load More Stays</button>
+            </div>
+
+            <!-- Map Toggle (Floating) -->
+            <div class="map-toggle-float">
+                <i class="fa-solid fa-map"></i> View on Map
+            </div>
+
+        </section>
+    </main>
+
+</body>
+
+</html>

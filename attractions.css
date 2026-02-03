@@ -1,0 +1,191 @@
+/* Attractions Page Styles */
+
+.attractions-layout {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+.attractions-header {
+    margin-bottom: 32px;
+}
+
+.attractions-header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.attractions-header p {
+    color: var(--primary-green);
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Filter Pills */
+.filter-pills {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.pill:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.pill.active {
+    background: var(--primary-green);
+    color: #064e3b;
+    border-color: var(--primary-green);
+}
+
+.pill i {
+    font-size: 14px;
+}
+
+/* Attraction Grid */
+.attraction-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.attraction-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.attraction-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-thumb {
+    height: 180px;
+    position: relative;
+}
+
+.card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rating-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+}
+
+.rating-badge i {
+    color: var(--primary-green);
+}
+
+.card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-body h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.meta-row {
+    display: flex;
+    flex-direction: column;
+    /* Stacked meta details as per design cards */
+    gap: 6px;
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.meta-row span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-row i {
+    color: #9ca3af;
+    width: 14px;
+}
+
+.nature-score-row {
+    margin-bottom: 20px;
+}
+
+.nature-score-row .label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #059669;
+    /* Darker green label */
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.leaves {
+    display: flex;
+    gap: 4px;
+    color: var(--primary-green);
+    font-size: 14px;
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .attraction-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .attraction-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .attraction-grid {
+        grid-template-columns: 1fr;
+    }
+}

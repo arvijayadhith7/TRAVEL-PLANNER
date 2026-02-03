@@ -1,0 +1,76 @@
+/* TripAI Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-green: #22E55C;
+    /* User's bg-primary */
+    --primary-green-hover: #1ec24e;
+    --text-dark: #0F1F14;
+    /* User's text-primary */
+    --text-light: #5F6F65;
+    /* User's text-secondary */
+    --text-white: #ffffff;
+    --bg-light: #F7FAF7;
+    /* User's bg-page */
+    --border-color: #DCE6E0;
+    /* User's border-light */
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Button Utilities */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--text-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green-hover);
+    transform: translateY(-1px);
+}
+
+.btn-icon {
+    gap: 8px;
+}
