@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Trip Cart - Trip Planner AI</title>
+    <link rel="stylesheet" href="tripcart.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-page="cart">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="header-left">
+                <a href="HP/index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <span>Trip Planner AI</span>
+                </a>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search destinations">
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="hotels.html">Explore</a>
+                <a href="#" class="active">My Trip</a>
+                <a href="settings.html">Settings</a>
+                <a href="#">Community</a>
+            </nav>
+
+            <div class="user-avatar"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Your Trip Cart</h1>
+            <p class="subtitle">Review your selections before generating your AI itinerary.</p>
+        </div>
+
+        <!-- Budget Tracker -->
+        <div class="budget-tracker">
+            <div class="tracker-header">
+                <div class="tracker-label">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Budget Tracker</span>
+                </div>
+                <span class="allocation-badge" id="allocationBadge">0% Allocated</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+            <div class="budget-info">
+                <span><strong id="spentAmount">₹0.00</strong> spent of <span id="totalBudgetDisplay">₹5,000</span>
+                    budget</span>
+                <span class="remaining" id="remainingAmount">₹5,000.00 remaining</span>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">
+                <i class="fa-solid fa-suitcase-rolling"></i>
+            </div>
+            <h2>Your cart is empty</h2>
+            <p>Start exploring hotels, activities, and restaurants to build your perfect trip!</p>
+            <a href="hotels.html" class="btn-explore">
+                <i class="fa-solid fa-compass"></i>
+                Explore Recommendations
+            </a>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid" id="contentGrid">
+
+            <!-- Left Column - Cart Items -->
+            <div class="cart-items">
+
+                <!-- Hotels Section -->
+                <section class="cart-section" id="hotelsSection">
+                    <h2>Hotels & Stays</h2>
+                    <div class="cart-items-list" id="hotelsList">
+                        <!-- Hotels will be dynamically inserted -->
+                    </div>
+                </section>
+
+                <!-- Activities Section -->
+                <section class="cart-section" id="activitiesSection">
+                    <h2>Activities & Tours</h2>
+                    <div class="cart-items-list" id="activitiesList">
+                        <!-- Activities will be dynamically inserted -->
+                    </div>
+                </section>
+
+                <!-- Restaurants Section -->
+                <section class="cart-section" id="restaurantsSection" style="display: none;">
+                    <h2>Restaurants & Dining</h2>
+                    <div class="cart-items-list" id="restaurantsList">
+                        <!-- Restaurants will be dynamically inserted -->
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column - Trip Summary -->
+            <aside class="trip-summary">
+                <div class="summary-card">
+                    <h3>Trip Summary</h3>
+
+                    <div class="summary-row">
+                        <span class="label">Total Items</span>
+                        <span class="value" id="totalItems">0 Selections</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span class="label">Hotels Subtotal</span>
+                        <span class="value" id="hotelsSubtotal">₹0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span class="label">Activities Subtotal</span>
+                        <span class="value" id="activitiesSubtotal">₹0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span class="label">Taxes & Service Fees</span>
+                        <span class="value" id="taxesFees">₹0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span class="label">AI Optimization Fee</span>
+                        <span class="value free">FREE</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-total">
+                        <span class="label">Total Cost</span>
+                        <span class="amount" id="totalCost">₹0.00</span>
+                    </div>
+
+                    <button class="btn-generate" id="generateBtn">
+                        <i class="fa-solid fa-sparkles"></i>
+                        Generate Itinerary
+                    </button>
+
+                    <p class="summary-note">
+                        By clicking generate, our AI will build a personalized daily schedule based on your cart.
+                    </p>
+
+                    <div class="info-banner">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>You can still edit your selections after the itinerary is generated.</span>
+                    </div>
+
+                    <a href="hotels.html" class="continue-link">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Continue Exploring
+                    </a>
+
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>© 2024 Trip Planner AI. All rights reserved.</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Initialize cart page
+        function initCart() {
+            renderCartItems();
+            updateBudgetTracker();
+            updateSummary();
+            checkEmptyState();
+        }
+
+        function renderCartItems() {
+            const cart = TripPlanner.getCart();
+
+            // Render Hotels
+            const hotelsList = document.getElementById('hotelsList');
+            if (cart.hotels.length > 0) {
+                hotelsList.innerHTML = cart.hotels.map(hotel => createCartItemHTML(hotel, 'hotels')).join('');
+                document.getElementById('hotelsSection').style.display = 'block';
+            } else {
+                document.getElementById('hotelsSection').style.display = 'none';
+            }
+
+            // Render Activities
+            const activitiesList = document.getElementById('activitiesList');
+            if (cart.activities.length > 0) {
+                activitiesList.innerHTML = cart.activities.map(activity => createCartItemHTML(activity, 'activities')).join('');
+                document.getElementById('activitiesSection').style.display = 'block';
+            } else {
+                document.getElementById('activitiesSection').style.display = 'none';
+            }
+
+            // Render Restaurants
+            const restaurantsList = document.getElementById('restaurantsList');
+            if (cart.restaurants.length > 0) {
+                restaurantsList.innerHTML = cart.restaurants.map(restaurant => createCartItemHTML(restaurant, 'restaurants')).join('');
+                document.getElementById('restaurantsSection').style.display = 'block';
+            } else {
+                document.getElementById('restaurantsSection').style.display = 'none';
+            }
+
+            // Attach delete handlers
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const type = this.dataset.type;
+                    const id = this.dataset.id;
+                    TripPlanner.removeFromCart(type, id);
+                    initCart(); // Re-render
+                });
+            });
+        }
+
+        function createCartItemHTML(item, type) {
+            const totalPrice = type === 'hotels' ? item.price * (item.nights || 1) : item.price;
+
+            return `
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p class="location">${item.location}</p>
+                        <div class="item-meta">
+                            ${type === 'hotels' ?
+                    `<span><i class="fa-regular fa-calendar"></i> ${item.checkIn || 'TBD'} - ${item.checkOut || 'TBD'}</span>
+                                 <span><i class="fa-solid fa-bed"></i> ${item.nights || 1} Nights</span>` :
+                    type === 'activities' ?
+                        `<span><i class="fa-regular fa-clock"></i> ${item.duration || 'Full Day'}</span>
+                                 <span><i class="fa-solid fa-users"></i> ${item.guests || 2} Guests</span>` :
+                        `<span><i class="fa-solid fa-utensils"></i> ${item.cuisine || 'Restaurant'}</span>`
+                }
+                        </div>
+                    </div>
+                    <div class="item-price">₹${totalPrice.toLocaleString()}</div>
+                    <button class="delete-btn" data-type="${type}" data-id="${item.id}">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        function updateBudgetTracker() {
+            const status = TripPlanner.getBudgetStatus();
+
+            document.getElementById('progressFill').style.width = `${status.percentage}%`;
+            document.getElementById('allocationBadge').textContent = `${status.percentage}% Allocated`;
+            document.getElementById('spentAmount').textContent = `₹${status.spent.toLocaleString()}`;
+            document.getElementById('totalBudgetDisplay').textContent = `₹${status.total.toLocaleString()}`;
+            document.getElementById('remainingAmount').textContent = `₹${status.remaining.toLocaleString()} remaining`;
+
+            // Change color if over budget
+            if (status.isOverBudget) {
+                document.getElementById('progressFill').style.background = 'linear-gradient(90deg, #ef4444, #dc2626)';
+                document.getElementById('remainingAmount').style.color = '#ef4444';
+            }
+        }
+
+        function updateSummary() {
+            const cart = TripPlanner.getCart();
+
+            let hotelsTotal = 0;
+            let activitiesTotal = 0;
+            let restaurantsTotal = 0;
+
+            cart.hotels.forEach(h => hotelsTotal += h.price * (h.nights || 1));
+            cart.activities.forEach(a => activitiesTotal += a.price);
+            cart.restaurants.forEach(r => restaurantsTotal += r.price);
+
+            const subtotal = hotelsTotal + activitiesTotal + restaurantsTotal;
+            const taxes = subtotal * 0.15;
+            const total = subtotal + taxes;
+
+            document.getElementById('totalItems').textContent = `${TripPlanner.getCartItemCount()} Selections`;
+            document.getElementById('hotelsSubtotal').textContent = `₹${hotelsTotal.toLocaleString()}`;
+            document.getElementById('activitiesSubtotal').textContent = `₹${(activitiesTotal + restaurantsTotal).toLocaleString()}`;
+            document.getElementById('taxesFees').textContent = `₹${taxes.toLocaleString()}`;
+            document.getElementById('totalCost').textContent = `₹${total.toLocaleString()}`;
+        }
+
+        function checkEmptyState() {
+            const count = TripPlanner.getCartItemCount();
+
+            if (count === 0) {
+                document.getElementById('emptyState').style.display = 'flex';
+                document.getElementById('contentGrid').style.display = 'none';
+            } else {
+                document.getElementById('emptyState').style.display = 'none';
+                document.getElementById('contentGrid').style.display = 'grid';
+            }
+        }
+
+        // Generate Itinerary button
+        document.getElementById('generateBtn').addEventListener('click', function () {
+            if (TripPlanner.getCartItemCount() === 0) {
+                TripPlanner.showNotification('Add items to your cart first!', 'warning');
+                return;
+            }
+
+            TripPlanner.showNotification('Generating your personalized itinerary...', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'itinerary-loading.html';
+            }, 1000);
+        });
+
+        // Initialize on load
+        initCart();
+    </script>
+
+    <style>
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 100px;
+            height: 100px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .empty-icon i {
+            font-size: 40px;
+            color: #94a3b8;
+        }
+
+        .empty-state h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 24px;
+            max-width: 400px;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .cart-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+    </style>
+
+</body>
+
+</html>

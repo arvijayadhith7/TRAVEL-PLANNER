@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripsero - Your Next Escape</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" <link
+        rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+</head>
+
+<body data-page="home">
+
+    <!-- Hero Section with Background -->
+    <section class="hero-wrapper">
+
+        <!-- Navigation -->
+        <nav class="glass-nav">
+            <div class="container nav-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <span>Tripsero</span>
+                </a>
+
+                <div class="nav-links">
+                    <a href="#" class="active">Home</a>
+                    <a href="../hotels.html">Explore</a>
+                    <a href="../tripcart.html">My Trip</a>
+                    <a href="../settings.html">Settings</a>
+                    <a href="#">About us</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="../tripcart.html" class="cart-link" style="position: relative;">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </a>
+                    <a href="#" class="btn-signup">Ready to Explore</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Hero Content -->
+        <div class="container hero-center">
+
+            <h1 class="hero-title">
+                Explore the world,<br>AI-style.
+            </h1>
+
+            <p class="hero-subtext">
+                Tell us your preferences and we'll craft the perfect itinerary in seconds.
+            </p>
+
+            <!-- Search Bar Container -->
+            <div class="search-container-bottom">
+
+                <form class="main-search-bar" id="tripForm">
+                    <!-- Destination -->
+                    <div class="search-field">
+                        <div class="icon-section">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="field-content">
+                            <label>DESTINATION</label>
+                            <input type="text" id="destination" placeholder="Where to?" required>
+                        </div>
+                    </div>
+
+                    <div class="v-divider"></div>
+
+                    <!-- Budget -->
+                    <div class="search-field">
+                        <div class="icon-section">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                        <div class="field-content">
+                            <label>BUDGET</label>
+                            <select id="budget">
+                                <option value="50000">Budget</option>
+                                <option value="200000" selected>Midrange</option>
+                                <option value="500000">Luxury</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="v-divider"></div>
+
+                    <!-- Date Picker (Hidden trigger) -->
+                    <div class="search-field date-picker-wrapper">
+                        <div class="icon-section">
+                            <i class="fa-regular fa-calendar-check" id="calendarIcon" style="cursor: pointer;"></i>
+                        </div>
+                        <div class="field-content">
+                            <label>DATES</label>
+                            <input type="text" id="dateRange" placeholder="Select dates" readonly required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="search-btn">
+                        Plan My Trip <i class="fa-solid fa-sparkles"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../database.js"></script>
+    <script src="../app.js"></script>
+    <script>
+        // Initialize Flatpickr
+        const fp = flatpickr("#dateRange", {
+            mode: "range",
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "M j, Y",
+            onClose: function (selectedDates, dateStr, instance) {
+                if (selectedDates.length === 2) {
+                    const diffTime = Math.abs(selectedDates[1] - selectedDates[0]);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                    instance.altInput.value = `${instance.formatDate(selectedDates[0], "M j")} - ${instance.formatDate(selectedDates[1], "M j")} (${diffDays} days)`;
+                }
+            }
+        });
+
+        // Trigger calendar on icon click
+        document.getElementById('calendarIcon').addEventListener('click', () => {
+            fp.open();
+        });
+
+        // Handle form submission
+        document.getElementById('tripForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const destination = document.getElementById('destination').value;
+            const dates = fp.selectedDates;
+
+            if (dates.length < 2) {
+                TripPlanner.showNotification('Please select a date range!', 'error');
+                return;
+            }
+
+            const startDate = dates[0].toISOString().split('T')[0];
+            const endDate = dates[1].toISOString().split('T')[0];
+            const diffTime = Math.abs(dates[1] - dates[0]);
+            const duration = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+            const budgetValue = parseInt(document.getElementById('budget').value) || 50000;
+            const budgetText = document.getElementById('budget').options[document.getElementById('budget').selectedIndex].text;
+
+            const tripData = {
+                destination: destination,
+                budget: budgetValue,
+                budgetType: budgetText,
+                travelers: 2,
+                duration: duration,
+                startDate: startDate,
+                endDate: endDate,
+                preferences: 'all'
+            };
+
+            // Clear previous selections for a fresh start
+            TripPlanner.clearCart();
+
+            // Save to localStorage
+            TripPlanner.saveTripData(tripData);
+
+            // Redirect to loading page
+            window.location.href = '../loading.html';
+        });
+    </script>
+
+</body>
+
+</html>

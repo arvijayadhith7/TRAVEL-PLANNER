@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Planning Your Itinerary... - Tripsero</title>
+    <link rel="stylesheet" href="global.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .loading-container {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .ai-loader {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 40px;
+        }
+
+        .brain-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: #22c55e;
+            text-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+            animation: brain-pulse 2s ease-in-out infinite;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-1 {
+            width: 100px;
+            height: 100px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .orbit-2 {
+            width: 150px;
+            height: 150px;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        .node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        .node-1 {
+            top: -4px;
+            left: 50%;
+        }
+
+        .node-2 {
+            bottom: -4px;
+            left: 50%;
+        }
+
+        .node-3 {
+            left: -4px;
+            top: 50%;
+        }
+
+        .node-4 {
+            right: -4px;
+            top: 50%;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes brain-pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .status-text {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff, #22c55e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-status {
+            font-size: 17px;
+            color: #94a3b8;
+            height: 24px;
+            font-weight: 500;
+        }
+
+        .scanning-line {
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #22c55e, transparent);
+            margin: 40px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scanning-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.5), transparent);
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            from {
+                left: -100%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Connecting Lines Effect */
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="loading-container">
+        <div class="ai-loader">
+            <div class="orbit orbit-1">
+                <div class="node node-1"></div>
+                <div class="node node-2"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="node node-3"></div>
+                <div class="node node-4"></div>
+            </div>
+            <i class="fa-solid fa-brain brain-icon"></i>
+        </div>
+
+        <div class="status-text">AI is Planning Your Trip</div>
+        <div class="sub-status" id="subStatus">Optimizing travel routes...</div>
+
+        <div class="scanning-line"></div>
+    </div>
+
+    <script>
+        const statusItems = [
+            "Optimizing travel routes...",
+            "Calculating travel times between spots...",
+            "Checking opening hours for landmarks...",
+            "Sorting activities by best visit time...",
+            "Applying your budget preferences...",
+            "Finalizing your day-by-day plan...",
+            "Generating your smart itinerary..."
+        ];
+
+        let index = 0;
+        const subStatus = document.getElementById('subStatus');
+
+        const statusInterval = setInterval(() => {
+            index++;
+            if (index < statusItems.length) {
+                subStatus.style.opacity = '0';
+                setTimeout(() => {
+                    subStatus.innerText = statusItems[index];
+                    subStatus.style.opacity = '1';
+                }, 300);
+            } else {
+                clearInterval(statusInterval);
+                setTimeout(() => {
+                    window.location.href = 'itinerary.html';
+                }, 1000);
+            }
+        }, 1500);
+
+        // Simple starfield/connection background
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        const particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#22c55e';
+            ctx.strokeStyle = '#22c55e';
+
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 150) {
+                        ctx.globalAlpha = 1 - dist / 150;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+                ctx.globalAlpha = 1;
+            });
+
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+</body>
+
+</html>
