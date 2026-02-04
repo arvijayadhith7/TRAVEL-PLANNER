@@ -188,7 +188,10 @@ function initCartPage() {
                 TripPlanner.showNotification('Add items to cart first!', 'warning');
                 return;
             }
-            window.location.href = 'itinerary.html';
+            TripPlanner.showNotification('Generating your personalized itinerary...', 'success');
+            setTimeout(() => {
+                window.location.href = 'itinerary-loading.html';
+            }, 1000);
         });
     }
 }
