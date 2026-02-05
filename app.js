@@ -150,6 +150,18 @@ const SampleData = window.Database || {};
 
 // ===== PAGE INITIALIZERS =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if database is already loaded
+    if (window.Database && window.Database.hotels && window.Database.hotels.length > 0) {
+        initApp();
+    } else {
+        // Wait for database-ready event
+        console.log('Waiting for database...');
+        window.addEventListener('database-ready', initApp);
+    }
+});
+
+function initApp() {
+    console.log('Initializing App...');
     // Update cart badge on all pages
     TripPlanner.updateCartBadge();
 
@@ -165,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (page === 'itinerary') {
         initItineraryPage();
     }
-});
+}
 
 // Home Page -Capture trip input (Mostly handled by inline script)
 function initHomePage() { }
